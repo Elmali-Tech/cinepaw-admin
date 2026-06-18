@@ -1,0 +1,284 @@
+.ann-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .ann-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Compose card ───────────────────────────────────────────────────── */
+.ann-compose {
+  position: sticky;
+  top: 24px;
+}
+
+.ann-compose .card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ann-compose-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ann-compose-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.ann-compose-head h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.ann-compose-head p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ann-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ann-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ann-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ann-textarea {
+  width: 100%;
+  min-height: 130px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14.5px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.ann-char-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: -10px;
+}
+
+.ann-char-count.warn {
+  color: var(--danger);
+}
+
+.ann-schedule-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ann-schedule-toggle input[type='checkbox'] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.ann-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.ann-recipient-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+/* ── History table ──────────────────────────────────────────────────── */
+.ann-history .card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ann-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ann-history-head h3 {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.ann-history-head span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ann-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ann-table th {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+
+.ann-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.ann-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ann-table tr:hover td {
+  background: var(--surface-2);
+}
+
+.ann-msg {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+  max-width: 320px;
+  word-break: break-word;
+}
+
+.ann-action-link {
+  font-size: 12px;
+  color: var(--brand);
+  text-decoration: none;
+  display: block;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.ann-action-link:hover {
+  text-decoration: underline;
+}
+
+.ann-status-sent {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #e8fdf2;
+  color: #1c8a52;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ann-status-scheduled {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff8e0;
+  color: #9a6500;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ann-recipients {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.ann-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ann-cancel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--danger);
+  padding: 4px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s;
+}
+
+.ann-cancel-btn:hover {
+  background: #fee2e2;
+}
+
+.ann-empty {
+  padding: 48px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.ann-loading {
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  gap: 10px;
+}
+
+.ann-scheduled-info {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}

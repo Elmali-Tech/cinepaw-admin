@@ -1,0 +1,250 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 680px;
+}
+
+.settings-section {
+  overflow: hidden;
+}
+
+.settings-section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.settings-section-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.settings-section-head h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+.settings-section-head p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.settings-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s var(--ease);
+}
+.setting-row:last-child {
+  border-bottom: none;
+}
+.setting-row:hover {
+  background: var(--surface-2);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.setting-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+.setting-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Reuse the switch from modal.css but make it slightly larger here */
+.settings-page .switch {
+  width: 56px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: none;
+  background: #d9dcec;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s var(--ease);
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.settings-page .switch.on {
+  background: var(--brand-gradient);
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.4);
+}
+.settings-page .switch.busy {
+  opacity: 0.7;
+  cursor: wait;
+}
+.settings-page .switch-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s var(--ease);
+}
+.settings-page .switch.on .switch-knob {
+  transform: translateX(26px);
+}
+.knob-spin {
+  color: var(--brand);
+}
+.switch.on .knob-spin {
+  color: #fff;
+}
+
+/* ── Splash video section ────────────────────────────────────────── */
+.splash-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.splash-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.splash-video-preview {
+  width: 100%;
+  max-height: 260px;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+.splash-preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+.splash-preview-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.splash-upload-area {
+  border: 2px dashed var(--border-bright);
+  border-radius: 14px;
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+  background: var(--surface-2);
+}
+
+.splash-upload-area:hover:not(.uploading) {
+  background: rgba(124, 92, 255, 0.04);
+  border-color: var(--brand);
+}
+
+.splash-upload-area.uploading {
+  cursor: default;
+}
+
+.splash-upload-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.splash-upload-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.splash-upload-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.splash-upload-progress span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.splash-progress-bar {
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.splash-progress-fill {
+  height: 100%;
+  background: var(--brand-gradient);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.splash-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 12px 16px;
+  background: var(--surface-2);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.splash-note code {
+  font-family: monospace;
+  background: var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.settings-loading,
+.settings-error {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.settings-error {
+  color: var(--danger);
+}
