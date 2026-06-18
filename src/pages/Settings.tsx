@@ -50,6 +50,8 @@ export default function Settings() {
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [uploading, setUploading]         = useState(false);
   const [removing, setRemoving]           = useState(false);
+  const [ytUrl, setYtUrl]                 = useState('');
+  const [ytUploading, setYtUploading]     = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -113,6 +115,21 @@ export default function Settings() {
     } finally {
       setUploading(false);
       setUploadProgress(0);
+    }
+  };
+
+  const handleYtUpload = async () => {
+    if (!ytUrl.trim()) return;
+    setYtUploading(true);
+    try {
+      const { data } = await api.post<{ url: string }>('/admin/splash/youtube', { url: ytUrl.trim() });
+      setSplashUrl(data.url);
+      setYtUrl('');
+      notify('Giriş ekranı videosu güncellendi.', 'success');
+    } catch (e) {
+      notify(errMsg(e, 'YouTube videosu indirilemedi.'), 'error');
+    } finally {
+      setYtUploading(false);
     }
   };
 
@@ -247,6 +264,41 @@ export default function Settings() {
                 <span className="splash-upload-hint">MP4, MOV veya WEBM · Maks. 8sn · 200MB</span>
               </>
             )}
+          </div>
+
+          {/* YouTube URL */}
+          <div className="splash-yt-row">
+            <span className="splash-yt-divider">— veya YouTube'dan indir —</span>
+            <div className="splash-yt-input-row">
+              <input
+                className="splash-yt-input"
+                type="url"
+                placeholder="https://youtube.com/watch?v=…"
+                value={ytUrl}
+                onChange={(e) => setYtUrl(e.target.value)}
+                disabled={uploading || ytUploading || removing}
+              />
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={handleYtUpload}
+                disabled={!ytUrl.trim() || uploading || ytUploading || removing}
+                type="button"
+              >
+                {ytUploading ? (
+                  <svg className="spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                  </svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                )}
+                {ytUploading ? 'İndiriliyor…' : 'İndir'}
+              </button>
+            </div>
+            <span className="splash-yt-hint">Video sunucuya indirilir ve Supabase'e yüklenir. Kısa videolar önerilir (maks. 20 sn).</span>
           </div>
 
           <p className="splash-note">
